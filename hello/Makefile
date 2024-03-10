@@ -1,12 +1,12 @@
-CFLAGS=-ggdb -Wall -Wextra
+CFLAGS=-Wall -Wextra -ggdb
 
 all: hello hello.i hello.c
 
 hello.o: hello.c
-	gcc $(CFLAGS) -Wa, -a=hello.lst -c hello.c
+	gcc $(CFLAGS) -Wa,-a=hello.lst -c hello.c
 
 hello: hello.o
-	gcc $(CFLAGS) -static -Wl, -Map=hello.map -o hello hello.o
+	gcc $(CFLAGS) -static -Wl,-Map=hello.map -o hello hello.o
 
 hello.i: hello.c
 	gcc -E hello.c >hello.i
